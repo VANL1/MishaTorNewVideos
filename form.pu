@@ -1,0 +1,20 @@
+from django import forms
+from .models import ChatMessage
+
+class ChatMessageForm(forms.ModelForm):
+    class Meta:
+        model = ChatMessage
+        fields = ['username', 'message']
+        widgets = {
+            'username': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Ваше имя',
+                'maxlength': 50
+            }),
+            'message': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Введите сообщение...',
+                'rows': 3,
+                'maxlength': 500
+            }),
+        }
